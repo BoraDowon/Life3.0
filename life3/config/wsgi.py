@@ -1,5 +1,5 @@
 """
-WSGI config for django_diary project.
+WSGI config for life3.0 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
