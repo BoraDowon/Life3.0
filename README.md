@@ -8,6 +8,6 @@
 
 
 ### How to build react
-1. > cd life3/react
+1. > cd life3/static/react
 2. > npm i
 3. > webpack
