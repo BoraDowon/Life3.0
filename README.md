@@ -5,7 +5,7 @@
 2. > source venv/bin/activate
 3. > (venv) pip install -r requirements.txt
 4. > (venv) python manage.py runserver --settings=life3.config.settings.local
-(Instead of --settings, you can set DJANGO_SETTINGS_MODULE=config.settings.local)
+(Instead of --settings, you can set DJANGO_SETTINGS_MODULE=life3.config.settings.local)
 
 ### How to build react
 1. > cd life3/static/react
