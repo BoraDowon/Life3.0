@@ -4,7 +4,7 @@
 1. > python3 -m venv venv
 2. > source venv/bin/activate
 3. > (venv) pip install -r requirements.txt
-4. > (venv) python manage.py runserver
+4. > (venv) python manage.py runserver --settings=life.config.settings.local
 
 
 ### How to build react
