@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
+
+from . import services
 
 
 def home(request):
@@ -18,3 +21,10 @@ def home_articles(request):
 
     posts_map = {'articles': posts}
     return JsonResponse(posts_map)
+
+
+# TODO: modify HttpResponse to JsonResponse later
+def get_life_logs(request):
+    life_jsons = services.read_events()
+    return HttpResponse(life_jsons, content_type='application/json')
+
