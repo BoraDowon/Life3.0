@@ -21,7 +21,7 @@ class LifeLog(models.Model):
     type = models.CharField(max_length=1, choices=TYPE_INFO)
 
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return 'LifeLog Model : {}, {}, {}, {}'.\
