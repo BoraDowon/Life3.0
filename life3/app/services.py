@@ -1,4 +1,4 @@
-import json
+from django.http import JsonResponse
 
 from .models import LifeLog
 from .data import  LifeLogDto
@@ -24,15 +24,5 @@ def modify_event():
 
 
 def read_events():
-    # FIXME: implement logic and serializer
-    query_set = LifeLog.objects.all()
-    fields = ['title', 'status', 'type']
-    query_list = list()
-    for query_item in query_set:
-        item = dict()
-        for key in fields:
-            if getattr(query_item, key):
-                item[key] = getattr(query_item, key)
-        query_list.append(item)
-    json_data = json.dumps(query_list)
-    return json_data
+    life_logs = LifeLog.objects.all().values('title', 'status', 'type')
+    return JsonResponse({'result': list(life_logs)})
