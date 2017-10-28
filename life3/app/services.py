@@ -12,7 +12,7 @@ def create_event(data: dict) -> bool:
     :return: True if succeed
     """
     # TODO: validation
-    life_log = LifeLog(title=data['title'], status=data['status'], type=data['type'])
+    life_log = LifeLog(title=data['title'], status=data['status'], type=data['type'], timestamp=data['timestamp'])
     life_log.save()
     return True
 
