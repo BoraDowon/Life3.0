@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls import include
 from life3.app import views
 
 urlpatterns = [
     url(r'^$', views.api_home),
-    url(r'^api/articles', views.api_home_articles),
-    url(r'^api/life-logs', views.api_life_logs),
+    url(r'^api/', include('life3.app.urls')),
 ]
