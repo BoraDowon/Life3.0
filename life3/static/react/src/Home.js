@@ -27,7 +27,7 @@ class Home extends React.Component {
     render() {
         const posts = this.state.events.map((event) =>
             // FIXME: insert right key
-            <li key='1'>{event['title']}, {event['type']}, {event['timestamp']}</li>
+            <li>{event['title']}, {event['type']}, {event['timestamp']}</li>
         );
 
         return (
