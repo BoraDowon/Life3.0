@@ -3,7 +3,7 @@ import time
 from django.db import models
 
 
-class LifeLog(models.Model):
+class LifeCard(models.Model):
     STATUS_INFO = (
         ('0', 'Active'),
         ('1', 'Inactive'),

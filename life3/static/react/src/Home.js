@@ -14,7 +14,7 @@ class Home extends React.Component {
 
     componentDidMount() {
         let _this = this;
-        fetch('/api/life-logs')
+        fetch('/api/lifecardsc')
             .then(function (response) {
                 return ApiUtils.parse(response)
             }).then(function (json) {

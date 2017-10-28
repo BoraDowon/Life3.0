@@ -11,7 +11,7 @@ def api_home(request):
     return render(request, 'home.html')
 
 
-def api_life_logs(request: HttpRequest) -> JsonResponse:
+def api_lifecards(request: HttpRequest) -> JsonResponse:
     """ API for life logs
 
     :param request: http request
@@ -24,8 +24,8 @@ def api_life_logs(request: HttpRequest) -> JsonResponse:
         return JsonResponse({'result': message})
 
     elif request.method == 'GET':
-        life_logs = services.read_events()
-        return JsonResponse({'events': life_logs})
+        lifecards = services.read_events()
+        return JsonResponse({'events': lifecards})
 
     else:
         return JsonResponse({'result': f'Unsupported method {request.method}'})
