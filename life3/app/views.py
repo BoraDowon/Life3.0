@@ -1,15 +1,14 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from django.http import HttpResponse
+from django.http import JsonResponse, HttpRequest
 
 from . import services
 
 
-def home(request):
+def api_home(request):
     return render(request, 'home.html')
 
 
-def home_articles(request):
+def api_home_articles(request):
     posts = []
     a1 = {'id': 1, 'title': 'test1'}
     a2 = {'id': 2, 'title': 'test2'}
@@ -23,8 +22,12 @@ def home_articles(request):
     return JsonResponse(posts_map)
 
 
-# TODO: modify HttpResponse to JsonResponse later
-def get_life_logs(request):
-    life_jsons = services.read_events()
-    return HttpResponse(life_jsons, content_type='application/json')
+def api_get_life_logs(request: HttpRequest) -> JsonResponse:
+    """ API for getting life logs
+
+    :param request: http request
+    :return: JSON response
+    """
+    life_logs = services.read_events()
+    return JsonResponse({'events': life_logs})
 

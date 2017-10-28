@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from typing import List
 
 from .models import LifeLog
 from .data import LifeLogDto
@@ -23,10 +23,10 @@ def modify_event():
     pass
 
 
-def read_events():
+def read_events() -> List[dict]:
     """ Return all events.
 
-    :return: JSON styled events list
+    :return: list of events
     """
     life_logs = LifeLog.objects.all().values('title', 'status', 'type', 'timestamp')
-    return JsonResponse({'events': list(life_logs)})
+    return list(life_logs)
