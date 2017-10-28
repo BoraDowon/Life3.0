@@ -12,9 +12,15 @@ class Home extends React.Component {
         this.state = {
             events: []
         }
+        this.refresh = this.refresh.bind(this);
+        this.onCartCreated = this.onCartCreated.bind(this);
     }
 
     componentDidMount() {
+        this.refresh();
+    }
+
+    refresh() {
         let _this = this;
         fetch('/api/lifecards')
             .then(function (response) {
@@ -26,6 +32,10 @@ class Home extends React.Component {
         });
     }
 
+    onCartCreated() {
+        this.refresh();
+    }
+
     render() {
         const posts = this.state.events.map((event) =>
             <li key={event['id']}>{event['id']}, {event['title']}, {event['type']}, {event['timestamp']}</li>
@@ -34,7 +44,7 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>Life 3.0</h1>
-                <LifeCardCreator />
+                <LifeCardCreator onCartCreated={this.onCartCreated}/>
                 <ul>{posts}</ul>
             </div>
         )
