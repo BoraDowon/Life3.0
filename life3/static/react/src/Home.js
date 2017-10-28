@@ -8,30 +8,31 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            events: []
         }
     }
 
     componentDidMount() {
         let _this = this;
-        fetch('/api/articles')
+        fetch('/api/life-logs')
             .then(function (response) {
                 return ApiUtils.parse(response)
             }).then(function (json) {
-                _this.setState({posts: json['articles']})
+                _this.setState({events: json['events']})
         }).catch(function (ex) {
             console.log('api request failed!', ex)
         });
     }
 
     render() {
-        const posts = this.state.posts.map((post) =>
-            <li key={post['id']}>{post['title']}</li>
+        const posts = this.state.events.map((event) =>
+            // FIXME: insert right key
+            <li key='1'>{event['title']}, {event['type']}, {event['timestamp']}</li>
         );
 
         return (
             <div>
-                <h1>Home react!!</h1>
+                <h1>Life 3.0</h1>
                 <ul>{posts}</ul>
             </div>
         )
