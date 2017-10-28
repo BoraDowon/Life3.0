@@ -17,7 +17,6 @@ def create_event(data: dict) -> bool:
     timezone = pytz.timezone('Asia/Seoul')
     life_log = LifeLog()
     life_log.title = data['title']
-    life_log.status = data['status']
     life_log.type = data['type']
     life_log.timestamp = datetime.fromtimestamp(data['timestamp'], tz=timezone)
     life_log.save()
