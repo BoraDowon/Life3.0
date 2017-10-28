@@ -19,5 +19,5 @@ from life3.app import views
 urlpatterns = [
     url(r'^$', views.api_home),
     url(r'^api/articles', views.api_home_articles),
-    url(r'^api/life-logs', views.api_get_life_logs),
+    url(r'^api/life-logs', views.api_life_logs),
 ]
