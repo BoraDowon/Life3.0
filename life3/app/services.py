@@ -1,5 +1,6 @@
 from typing import List
 from datetime import datetime
+import pytz
 
 from .models import LifeLog
 
@@ -12,12 +13,13 @@ def create_event(data: dict) -> bool:
     :param data: dict data to be created
     :return: True if succeed
     """
-    # TODO: validation
+    # TODO: validation, applying timezone from front
+    timezone = pytz.timezone('Asia/Seoul')
     life_log = LifeLog()
     life_log.title = data['title']
     life_log.status = data['status']
     life_log.type = data['type']
-    life_log.timestamp = datetime.fromtimestamp(data['timestamp'], tz=None)
+    life_log.timestamp = datetime.fromtimestamp(data['timestamp'], tz=timezone)
     life_log.save()
     return True
 
