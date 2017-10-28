@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 
 from .models import LifeLog
-from .data import  LifeLogDto
+from .data import LifeLogDto
 
 # TODO: do we need to consider class based?
 
@@ -24,5 +24,9 @@ def modify_event():
 
 
 def read_events():
-    life_logs = LifeLog.objects.all().values('title', 'status', 'type')
-    return JsonResponse({'result': list(life_logs)})
+    """ Return all events.
+
+    :return: JSON styled events list
+    """
+    life_logs = LifeLog.objects.all().values('title', 'status', 'type', 'timestamp')
+    return JsonResponse({'events': list(life_logs)})

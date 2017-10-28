@@ -2,9 +2,9 @@
 class LifeLogDto:
 
     def __init__(self):
-        self.type = 'P'
+        self.type = ''
         self.title = ''
-        self.status = '0'
+        self.status = ''
 
     '''
         dto: LifeLogDto
