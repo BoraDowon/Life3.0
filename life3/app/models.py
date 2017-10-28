@@ -16,7 +16,7 @@ class LifeLog(models.Model):
     )
 
     title = models.CharField(max_length=500)
-    timestamp = models.IntegerField(default=(time.time()))
+    timestamp = models.DateTimeField()
     status = models.CharField(max_length=1, choices=STATUS_INFO)
     type = models.CharField(max_length=1, choices=TYPE_INFO)
 
