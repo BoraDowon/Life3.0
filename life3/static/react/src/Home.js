@@ -45,7 +45,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <h1>Life 3.0</h1>
+                <h1 className="header-title-font">Life 3.0</h1>
                 <LifeCardCreator onCartCreated={this.onCartCreated}/>
                 <div>{cards}</div>
             </div>
