@@ -19,7 +19,9 @@ class LifeCardListItem extends React.Component {
 
         return (
             <div className="life-card-padding">
-                {typeIcon} {this.props.cardTitle} {this.props.cardDate}
+                {typeIcon}
+                <span className="life-card-title">{this.props.cardTitle}</span>
+                <span className="life-card-date">{this.props.cardDate}</span>
             </div>
         )
     }

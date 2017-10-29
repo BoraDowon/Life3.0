@@ -36,12 +36,19 @@ def read_events() -> List[dict]:
 
     :return: list of events
     """
-    # TODO: in fureture, the function will get a information of timezone
-    tz = pytz.timezone('Asia/Seoul')
-    query_lifecards = LifeCard.objects.all().values('id', 'title', 'status', 'type', 'timestamp')
+    # TODO: in future, the function will get a information of timezone
+    query = LifeCard.objects.all().values('id', 'title', 'type', 'timestamp')
+    return list(map(_deco_time_to_display, list(query)))
 
-    for lifecard in list(query_lifecards):
-        utc_to_local = lifecard['timestamp'].astimezone(tz=tz)
-        utc_to_local_str = utc_to_local.strftime('%Y-%m-%d %H:%M')
-        lifecard.update({'time_to_display': utc_to_local_str})
-    return list(query_lifecards)
+
+def _deco_time_to_display(life_card: dict) -> dict:
+    """ Decorate 'time_to_display' and remove 'timestamp'
+    """
+    timezone = pytz.timezone('Asia/Seoul')
+    life_card['time_to_display'] = life_card['timestamp'].astimezone(tz=timezone).strftime('%Y-%m-%d %H:%M')
+    del life_card['timestamp']
+    return life_card
+
+
+def read_statistics():
+    pass
