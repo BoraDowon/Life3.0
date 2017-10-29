@@ -14,7 +14,7 @@ def create_event(data: dict) -> bool:
     :return: True if succeed
     """
     # TODO: validation, applying timezone from front
-    timezone = pytz.timezone('Asia/Seoul')
+    timezone = pytz.timezone('UTC')
     lifecard = LifeCard()
     lifecard.title = data['title']
     lifecard.type = data['type']
@@ -36,10 +36,9 @@ def read_events() -> List[dict]:
 
     :return: list of events
     """
-    #lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
     # TODO: in fureture, the function will get a information of timezone
     tz = pytz.timezone('Asia/Seoul')
-    query_lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
+    query_lifecards = LifeCard.objects.all().values('id', 'title', 'status', 'type', 'timestamp')
 
     for lifecard in list(query_lifecards):
         utc_to_local = lifecard['timestamp'].astimezone(tz=tz)

@@ -26,3 +26,6 @@ class LifeCard(models.Model):
     def __str__(self):
         return 'LifeLog Model : {}, {}, {}, {}'.\
             format(self.title, self.timestamp, self.type, self.status)
+
+    class Meta:
+        ordering = ['-timestamp']
