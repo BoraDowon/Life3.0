@@ -51,4 +51,22 @@ def _deco_time_to_display(life_card: dict) -> dict:
 
 
 def read_statistics():
-    pass
+    query = LifeCard.objects.all().values('id', 'type', 'timestamp')
+    work_count = 0
+    play_count = 0
+    rest_count = 0
+    for item in query:
+        if item['type'] == 'R':
+            rest_count += 1
+        if item['type'] == 'W':
+            work_count += 1
+        if item['type'] == 'P':
+            play_count += 1
+
+    work_dict = {'title': '일', 'type': 'W', 'count': work_count}
+    play_dict = {'title': '놀이', 'type': 'P', 'count': play_count}
+    rest_dict = {'title': '휴식', 'type': 'R', 'count': rest_count}
+
+    return [work_dict, play_dict, rest_dict]
+
+

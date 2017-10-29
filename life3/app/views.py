@@ -31,3 +31,9 @@ def api_lifecards(request: HttpRequest) -> JsonResponse:
         return JsonResponse({'result': f'Unsupported method {request.method}'})
 
 
+def api_statistics(request: HttpRequest) -> JsonResponse:
+    if request.method == 'GET':
+        lifestats = services.read_statistics()
+        return JsonResponse({'statistics': lifestats})
+    else:
+        return JsonResponse({'statistics': f'Unsupported method {request.method}'})
