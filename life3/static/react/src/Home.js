@@ -4,6 +4,7 @@ import 'whatwg-fetch'
 import ApiUtils from "./ApiUtils";
 
 import LifeCardCreator from "./LifeCardCreator";
+import LifeCardListItem from "./LifeCardListItem";
 
 class Home extends React.Component {
 
@@ -37,15 +38,16 @@ class Home extends React.Component {
     }
 
     render() {
-        const posts = this.state.events.map((event) =>
-            <li key={event['id']}>{event['id']}, {event['title']}, {event['type']}, {event['timestamp']}</li>
+        const cards = this.state.events.map((event) =>
+            <LifeCardListItem key={event['id']} cardId={event['id']} cardTitle={event['title']}
+                              cardDate={event['timestamp']} cardType={event['type']}/>
         );
 
         return (
             <div>
                 <h1>Life 3.0</h1>
                 <LifeCardCreator onCartCreated={this.onCartCreated}/>
-                <ul>{posts}</ul>
+                <div>{cards}</div>
             </div>
         )
     }
