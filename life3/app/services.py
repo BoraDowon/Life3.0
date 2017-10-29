@@ -48,3 +48,7 @@ def _deco_time_to_display(life_card: dict) -> dict:
     life_card['time_to_display'] = life_card['timestamp'].astimezone(tz=timezone).strftime('%Y-%m-%d %H:%M')
     del life_card['timestamp']
     return life_card
+
+
+def read_statistics():
+    pass
