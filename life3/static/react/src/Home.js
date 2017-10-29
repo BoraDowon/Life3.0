@@ -40,7 +40,7 @@ class Home extends React.Component {
     render() {
         const cards = this.state.events.map((event) =>
             <LifeCardListItem key={event['id']} cardId={event['id']} cardTitle={event['title']}
-                              cardDate={event['timestamp']} cardType={event['type']}/>
+                              cardDate={event['time_to_display']} cardType={event['type']}/>
         );
 
         return (

@@ -36,5 +36,13 @@ def read_events() -> List[dict]:
 
     :return: list of events
     """
-    lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
-    return list(lifecards)
+    #lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
+    # TODO: in fureture, the function will get a information of timezone
+    tz = pytz.timezone('Asia/Seoul')
+    query_lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
+
+    for lifecard in list(query_lifecards):
+        utc_to_local = lifecard['timestamp'].astimezone(tz=tz)
+        utc_to_local_str = utc_to_local.strftime('%Y-%m-%d %H:%M')
+        lifecard.update({'time_to_display': utc_to_local_str})
+    return list(query_lifecards)
