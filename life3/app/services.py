@@ -36,5 +36,5 @@ def read_events() -> List[dict]:
 
     :return: list of events
     """
-    lifecards = LifeCard.objects.all().values('id', 'title', 'status', 'type', 'timestamp')
+    lifecards = LifeCard.objects.order_by('timestamp').reverse().values('id', 'title', 'status', 'type', 'timestamp')
     return list(lifecards)
