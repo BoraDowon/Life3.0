@@ -17,8 +17,9 @@ class LifeCardListItem extends React.Component {
             typeIcon = <span className="label label-danger">&nbsp;&nbsp;&nbsp;</span>;
         }
         let date = new Date(this.props.cardDate * 1000);
-        let formatted_date = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-
+        // TODO: think more nice way to format it
+        let formatted_date = date.toLocaleString().substring(0, date.toLocaleString().length-3);
+        console.log('ss' + formatted_date);
         return (
             <div className="life-card-padding">
                 {typeIcon}
