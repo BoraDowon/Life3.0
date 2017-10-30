@@ -22,7 +22,7 @@ class LifeCard(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'LifeLog Model : {}, {}, {}, {}'.\
+        return 'LifeCard Model : {}, {}, {}, {}'.\
             format(self.title, self.timestamp, self.type, self.status)
 
     class Meta:
