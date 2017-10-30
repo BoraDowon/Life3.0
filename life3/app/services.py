@@ -16,8 +16,14 @@ def create_event(data: dict) -> bool:
     # TODO: validation, applying timezone from front
     timezone = pytz.timezone('UTC')
     lifecard = LifeCard()
+    type_info = LifeCard.TYPE_INFO
+    type_validation = [i for i, v in enumerate(type_info) if v[0] == data['type']]
+    if type_validation:
+        lifecard.type = data['type']
+    else:
+        return False
     lifecard.title = data['title']
-    lifecard.type = data['type']
+    lifecard.status = '0'
     lifecard.timestamp = datetime.fromtimestamp(data['timestamp'], tz=timezone)
     lifecard.save()
     return True
