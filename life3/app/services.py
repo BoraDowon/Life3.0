@@ -85,8 +85,7 @@ def read_events() -> List[dict]:
 def _deco_time_to_display(life_card: dict) -> dict:
     """ Decorate 'time_to_display' and remove 'timestamp'
     """
-    timezone = pytz.timezone('Asia/Seoul')
-    life_card['time_to_display'] = life_card['timestamp'].astimezone(tz=timezone).strftime('%Y-%m-%d %H:%M')
+    life_card['time_to_display'] = int(life_card['timestamp'].timestamp())
     del life_card['timestamp']
     del life_card['status']
     return life_card
