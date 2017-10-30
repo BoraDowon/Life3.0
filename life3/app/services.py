@@ -15,20 +15,25 @@ def create_event(data: dict) -> bool:
     :param data: dict data to be created
     :return: True if succeed
     """
-    # TODO: validation, applying timezone from front
-    timezone = pytz.timezone('UTC')
-    lifecard = LifeCard()
-    type_info = LifeCard.TYPE_INFO
-    type_validation = [i for i, v in enumerate(type_info) if v[0] == data['type']]
-    if type_validation:
-        lifecard.type = data['type']
-    else:
+    # TODO: applying timezone from front
+    if not _validate_card(data):
         return False
-    lifecard.title = data['title']
-    lifecard.status = '0'
-    lifecard.timestamp = datetime.fromtimestamp(data['timestamp'], tz=timezone)
-    lifecard.save()
+
+    life_card = LifeCard()
+    life_card.type = data['type']
+    life_card.title = data['title']
+    life_card.status = '0'
+    life_card.timestamp = datetime.fromtimestamp(data['timestamp'], tz=pytz.timezone('UTC'))
+    life_card.save()
     return True
+
+
+def _validate_card(data: dict) -> bool:
+    """ validate requested card
+    :param data: card data
+    :return: True if validation pass
+    """
+    return len(list(filter(lambda t: t[0] == data['type'], LifeCard.TYPE_INFO))) > 0
 
 
 def remove_event(pk) -> bool:
