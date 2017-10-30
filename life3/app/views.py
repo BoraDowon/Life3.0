@@ -1,5 +1,7 @@
-from django.shortcuts import render
 from django.http import JsonResponse, HttpRequest
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
+
 
 import json
 
@@ -11,6 +13,7 @@ def api_home(request):
     return render(request, 'home.html')
 
 
+@csrf_exempt
 def api_lifecards(request: HttpRequest) -> JsonResponse:
     """ API for life logs
 
