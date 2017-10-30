@@ -16,12 +16,14 @@ class LifeCardListItem extends React.Component {
         } else {
             typeIcon = <span className="label label-danger">&nbsp;&nbsp;&nbsp;</span>;
         }
+        let date = new Date(this.props.cardDate * 1000);
+        let formatted_date = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 
         return (
             <div className="life-card-padding">
                 {typeIcon}
                 <span className="life-card-title">{this.props.cardTitle}</span>
-                <span className="life-card-date">{this.props.cardDate}</span>
+                <span className="life-card-date">{formatted_date}</span>
             </div>
         )
     }
