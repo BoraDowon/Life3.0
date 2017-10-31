@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 
 import json
 
@@ -27,7 +26,22 @@ class LifeCardList(APIView):
         submitted_data: dict = json.loads(request.body)
         is_success = services.create_event(submitted_data)
         message = 'success' if is_success else 'fail'
-        return Response({'result': message})
+        result_json = {'result': message}
+        return Response(result_json)
+
+
+class LifeCardDetail(APIView):
+    def get(self, request: HttpRequest, card_pk, format=None):
+        pass
+
+    def post(self, request: HttpRequest, format=None):
+        pass
+
+    def put(self, request: HttpRequest, card_pk, format=None):
+        pass
+
+    def delete(self, request: HttpRequest, card_pk, format=None):
+        pass
 
 @csrf_exempt
 def api_lifecards(request: HttpRequest) -> JsonResponse:
