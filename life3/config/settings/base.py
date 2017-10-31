@@ -70,7 +70,7 @@ TEMPLATES = [
 
 AUTH_USER_MODEL = 'app.LifeUser'
 
-WSGI_APPLICATION = 'life3.config.wsgi.application.LifeUser'
+WSGI_APPLICATION = 'life3.config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
