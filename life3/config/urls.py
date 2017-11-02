@@ -20,4 +20,5 @@ from life3.app import views
 urlpatterns = [
     url(r'^$', views.api_home),
     url(r'^api/', include('life3.app.urls')),
+    url(r'^facebook/', views.facebook_oauth_test),
 ]
