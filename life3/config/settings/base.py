@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     #   'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'life3.app',
+    'life3.dashboard',
+    'life3.login',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'app.LifeUser'
+AUTH_USER_MODEL = 'dashboard.LifeUser'
 
 WSGI_APPLICATION = 'life3.config.wsgi.application'
 
