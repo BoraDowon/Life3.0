@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.conf.urls import include
-from life3.app import views
+from life3.app import views as apps_view
+from life3.login import views as login_view
 
 urlpatterns = [
-    url(r'^$', views.api_home),
+    url(r'^login/', login_view.LoginHome.as_view()),
     url(r'^api/', include('life3.app.urls')),
-    url(r'^facebook/', views.facebook_oauth_test),
+    url(r'^facebook/', apps_view.facebook_oauth_test),
 ]
