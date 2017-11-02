@@ -12,12 +12,21 @@
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId            : '742227722635556',
+          appId            : '501258146921514',
           autoLogAppEvents : true,
           xfbml            : true,
           version          : 'v2.10'
         });
         FB.AppEvents.logPageView();
+        FB.getLoginStatus(function(response) {
+            console.log(response.status);
+            if (response.status == 'connected') {
+                console.log(response.authResponse.accessToken);
+                console.log(response.authResponse.expiresIn);
+                console.log(response.authResponse.signedRequest);
+                console.log(response.authResponse.userID);
+            }
+        });
       };
 
       (function(d, s, id) {
@@ -25,11 +34,30 @@
           if (d.getElementById(id)) return;
           js = d.createElement(s); js.id = id;
           js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.10';
+          // debug mode
+          //js.src = 'https://connect.facebook.net/en_US/sdk/debug.js';
           fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
+    <script>
+        function checkLoginState() {
+          FB.getLoginStatus(function(response) {
+              console.log('status: ' + response.status);
+            if (response.status == 'connected') {
+                console.log('accessToken: ' + response.authResponse.accessToken);
+                console.log('expiresIn: ' + response.authResponse.expiresIn);
+                console.log('userID: ' + response.authResponse.userID);
+                FB.api('/me', function(response) {
+                  console.log('Successful login for: ' + response.name);
+                });
+            }
+          });
+        }
+    </script>
+
     <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with"
-         data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+         data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
+
 </body>
 </html>
