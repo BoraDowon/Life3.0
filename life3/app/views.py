@@ -1,6 +1,7 @@
-from django.http import JsonResponse, HttpRequest
+from django.http import JsonResponse, HttpRequest, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from django.shortcuts import redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -10,8 +11,20 @@ from . import services
 
 
 # TODO: remove
-def api_home(request):
+def api_home(request: HttpRequest):
+    code = request.GET.get('code')
+    print('Facebook Token: ' + code)
+    '''
+    url = 'https://graph.facebook.com/me?access_token={}&fields=id.name,email,picture'
+    '''
     return render(request, 'home.html')
+
+
+def facebook_oauth_test(request: HttpRequest):
+    client_id = '742227722635556'
+
+    url = 'https://www.facebook.com/v2.10/dialog/oauth?client_id={}&redirect_uri=http://localhost:8000/'.format(client_id)
+    return HttpResponseRedirect(url)
 
 
 class LifeCardList(APIView):
