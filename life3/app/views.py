@@ -12,8 +12,11 @@ from . import services
 
 # TODO: remove
 def api_home(request: HttpRequest):
-    code = request.GET.get('code')
-    print('Facebook Token: ' + code)
+    try:
+        code = request.GET.get('code')
+        print('Facebook Token: ' + code)
+    except TypeError:
+        print('Anonymous')
     '''
     url = 'https://graph.facebook.com/me?access_token={}&fields=id.name,email,picture'
     '''
