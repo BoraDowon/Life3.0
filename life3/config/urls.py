@@ -19,6 +19,7 @@ from life3.dashboard import views as dashboard_view
 from life3.login import views as login_view
 
 urlpatterns = [
+    url(r'^$', dashboard_view.api_home),
     url(r'^login/', login_view.LoginHome.as_view()),
     url(r'^api/', include('life3.dashboard.urls')),
     url(r'^facebook/', dashboard_view.facebook_oauth_test),
