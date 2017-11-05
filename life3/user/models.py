@@ -9,6 +9,9 @@ class LifeUser(models.Model):
     # user id from OAUTH
     account_id = models.TextField(max_length=30)
 
+    # user token from OAUTH
+    account_token = models.TextField(max_length=200)
+
     # user name from OAUTH
     profile_name = models.TextField(max_length=50)
 
