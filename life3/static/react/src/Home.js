@@ -23,7 +23,7 @@ class Home extends React.Component {
 
     refresh() {
         let _this = this;
-        fetch('/api/lifecards/')
+        fetch('/dashboard/api/lifecards/')
             .then(function (response) {
                 return ApiUtils.parse(response)
             }).then(function (json) {

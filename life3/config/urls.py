@@ -21,7 +21,7 @@ urlpatterns = [
     # TODO: change to dashboard/
     url(r'^$', dashboard_view.api_home),
     # TODO: change to dashboard/api/
-    url(r'^api/', include('life3.dashboard.urls')),
+    url(r'^dashboard/api/', include('life3.dashboard.urls')),
 
     url(r'^login/', include('life3.login.urls')),
 

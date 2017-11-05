@@ -41,7 +41,7 @@ class LifeCardCreator extends React.Component {
         }
 
         let _this = this;
-        fetch('/api/lifecards/', {
+        fetch('/dashboard/api/lifecards/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
