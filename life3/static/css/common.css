@@ -2,7 +2,14 @@
     background: #070017;
     padding: 5%;
 }
-
+.login-area {
+    width: 100%;
+    text-align: center;
+}
+.login-area > button {
+    display: inline-block;
+    width: 45%;
+}
 .header-title-font {
     color: #ded9d1;
 }

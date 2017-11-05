@@ -14,11 +14,17 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="fb-login-bt-custom" onClick={this.facebookLogin}>Facebook으로 로그인 하기</div>
-                <div className="fb-login-bt-custom" onClick={this.facebookLogout}>Facebook 로그아웃 하기</div>
+            <div className="login-area">
+                <h1 className="header-title-font">Life 3.0</h1>
+                <button className="fb-login-bt-custom" onClick={this.facebookLogin}>
+                    <i className="fa fa-facebook"></i>
+                    로그인 하기
+                </button>
+                <button className="fb-login-bt-custom" onClick={this.facebookLogout}>
+                    <i className="fa fa-facebook"></i>
+                    로그아웃 하기
+                </button>
             </div>
-
         )
     }
 

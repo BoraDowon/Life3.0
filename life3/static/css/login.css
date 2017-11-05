@@ -1,0 +1,36 @@
+.body {
+    background: #070017;
+    padding: 5%;
+    color: #fff;
+}
+h1 {
+    text-align: left;
+}
+.login-area {
+    width: 100%;
+    text-align: center;
+    color: #ded9d1;
+}
+.login-area > button {
+    display: inline-block;
+    margin: 3px;
+    width: 47.5%;
+    background-color: #4267b2;
+    border: 0;
+    border-radius: 3px;
+}
+.login-area > button > i {
+    display: inline-block;
+    margin-right: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+.login-area > button > i:before {
+    color: #4267b2;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    padding-left: 5px;
+}
