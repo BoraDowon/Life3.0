@@ -8,60 +8,8 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
 </head>
-<body>
-<script>
-
-    // Facebook SDK init
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '501258146921514',
-            autoLogAppEvents: true,
-            xfbml: true,
-            version: 'v2.10'
-        });
-        FB.AppEvents.logPageView();
-        checkFacebookLoginStatus();
-    };
-
-    // Get Facebook login button info
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.10';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    var checkFacebookLoginStatus = () => FB.getLoginStatus(callbackForLoginStatus);
-
-    var callbackForLoginStatus = response => {
-        console.log('status: ' + response.status);
-            if (response.status == 'connected') {
-                console.log('accessToken: ' + response.authResponse.accessToken);
-                console.log('expiresIn: ' + response.authResponse.expiresIn);
-                console.log('userID: ' + response.authResponse.userID);
-                FB.api('/me', function (response) {
-                    // TODO: need email and user image url
-                    let userProfile = {
-                        'userId': response.authResponse.userID,
-                        'userName': response.name,
-                        //'userEmail': response.email,
-                        //'userImage': response.userImage,
-                    }
-
-                    // TODO: POST /login/api/auth/
-                    console.log('sending profile: ' + userProfile);
-                });
-            }
-    };
-
-
-</script>
-
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with"
-     data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
-     onlogin="checkFacebookLoginStatus();"/>
-
+<body class="body">
+    <div id="root"></div>
+    <script type="text/javascript" charset="utf-8" src="/assets/login-min.js"></script>
 </body>
 </html>

@@ -3,7 +3,8 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        home: "./src/Home"
+        home: "./src/Home",
+        login: "./src/Login"
     },
     output: {
         path: path.join(__dirname, '../js/built/'),
