@@ -16,11 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from life3.dashboard import views as dashboard_view
-from life3.login import views as login_view
 
 urlpatterns = [
+    # TODO: change to dashboard/
     url(r'^$', dashboard_view.api_home),
-    url(r'^login/', login_view.LoginHome.as_view()),
+    # TODO: change to dashboard/api/
     url(r'^api/', include('life3.dashboard.urls')),
+
+    url(r'^login/', include('life3.login.urls')),
+
+    # TODO: remove it
     url(r'^facebook/', dashboard_view.facebook_oauth_test),
 ]
