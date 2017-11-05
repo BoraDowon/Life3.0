@@ -1,7 +1,6 @@
 from .models import LifeUser
 
 
-# TODO: implement
 class UserService:
 
     @staticmethod
@@ -13,7 +12,10 @@ class UserService:
     @staticmethod
     def update_user_profile(profile: dict):
         user = LifeUser.objects.get(account_id=profile['userId'], is_active=True)
+        user.profile_name = profile['userName']
         user.account_token = profile['accessToken']
+        user.profile_email = 'updated@email.com'
+        user.save()
 
     # TODO: consider using obj instead dict
     @staticmethod
