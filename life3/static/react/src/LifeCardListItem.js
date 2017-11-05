@@ -10,11 +10,11 @@ class LifeCardListItem extends React.Component {
     render() {
         let typeIcon = null;
         if (this.props.cardType == 'W') {
-            typeIcon = <span className="label label-success">&nbsp;&nbsp;&nbsp;</span>;
+            typeIcon = <span className="label label-success">W</span>;
         } else if (this.props.cardType == 'R') {
-            typeIcon = <span className="label label-info">&nbsp;&nbsp;&nbsp;</span>;
+            typeIcon = <span className="label label-info">R</span>;
         } else {
-            typeIcon = <span className="label label-danger">&nbsp;&nbsp;&nbsp;</span>;
+            typeIcon = <span className="label label-danger">P</span>;
         }
         let date = new Date(this.props.cardDate * 1000);
         // TODO: think more nice way to format it

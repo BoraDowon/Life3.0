@@ -22,3 +22,52 @@
 .life-card-padding {
     padding: 15px 10px 15px 10px;
 }
+.wrap-form .bg-danger {
+    margin: -5px 0 10px;
+    padding: 5px;
+}
+.form-inline > .btn {
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0 3px 5px 0;
+    padding: 0;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    color: #fff;
+    border-radius: 100%;
+    outline: 0;
+    background-color: #212529;
+}
+.form-inline > .btn-w:hover,
+.form-inline > .btn-w:focus,
+.form-inline > .btn-w.selected {
+    background-color: #5cb85c;
+}
+.form-inline > .btn-r:hover,
+.form-inline > .btn-r:focus,
+.form-inline > .btn-r.selected {
+    background-color: #5bc0de;
+}
+.form-inline > .btn-p:hover,
+.form-inline > .btn-p:focus,
+.form-inline > .btn-p.selected {
+    background-color: #d9534f;
+}
+.input-group-btn > .btn {
+    margin-right: -1px;
+    border-radius: 0 4px 4px 0;
+}
+
+.label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 0;
+    border-radius: 100%;
+    vertical-align: middle;
+}
