@@ -8,9 +8,10 @@ This project is only compatible with python3.6
 3. (venv) pip install -r requirements.txt
 4. (venv) export PYTHONPATH={your project root path}
 5. (venv) export DJANGO_SETTINGS_MODULE=life3.config.settings.local
-5. (venv) python manage.py makemigrations app
-6. (venv) python manage.py migrate
-7. (venv) python manage.py runserver
+5. (venv) python manage.py makemigrations user
+6. (venv) python manage.py makemigrations dashboard
+7. (venv) python manage.py migrate
+8. (venv) python manage.py runserver
 
 ### How to build react
 1. cd life3/static/react
