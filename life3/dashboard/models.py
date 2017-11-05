@@ -55,6 +55,9 @@ class LifeCard(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_INFO)
     type = models.CharField(max_length=1, choices=TYPE_INFO)
 
+    # account ID which is same as account_id in life3.user.models.LifeUser
+    account_id = models.CharField(max_length=30, null=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
