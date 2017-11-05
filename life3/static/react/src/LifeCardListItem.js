@@ -19,7 +19,6 @@ class LifeCardListItem extends React.Component {
         let date = new Date(this.props.cardDate * 1000);
         // TODO: think more nice way to format it
         let formatted_date = date.toLocaleString().substring(0, date.toLocaleString().length-3);
-        console.log('ss' + formatted_date);
         return (
             <div className="life-card-padding">
                 {typeIcon}
