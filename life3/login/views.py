@@ -26,16 +26,16 @@ class LoginApi(APIView):
         """
 
         profile: dict = json.loads(request.body)
-        user_service = UserService()
 
         message = 'success'
-        if profile['accessToken']:
-            if user_service.is_valid_user(profile['accessToken']):
-                user_service.update_user_profile(profile)
+        # userId, userName, accessToken, type
+        if profile['userId']:
+            if UserService.is_valid_user(profile['userId']):
+                UserService.update_user_profile(profile)
             else:
-                user_service.create_user_profile(profile)
+                UserService.create_user_profile(profile)
         else:
-            message = 'token is not included!'
+            message = 'userId is empty!'
 
         return Response({'result', message})
 
