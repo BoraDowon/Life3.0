@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'life3.dashboard',
     'life3.login',
+    'life3.user',
 ]
 
 MIDDLEWARE = [
