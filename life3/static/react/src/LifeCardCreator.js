@@ -35,6 +35,11 @@ class LifeCardCreator extends React.Component {
             return;
         }
 
+        if (this.state.typed_message == '') {
+            this.setState({warning_message: '내용을 입력해주세요!'})
+            return;
+        }
+
         let _this = this;
         fetch('/api/lifecards/', {
             method: 'POST',
@@ -61,14 +66,18 @@ class LifeCardCreator extends React.Component {
 
     render() {
         return (
-            <div>
+            <div claaName="wrap-form">
                 <div className="form-inline">
-                    <button type="button" className="btn btn-success" onClick={() => this.onClickWorkButton()}>일</button>
-                    <button type="button" className="btn btn-info" onClick={() => this.onClickRestButton()}>휴식</button>
-                    <button type="button" className="btn btn-danger" onClick={() => this.onClickPlayButton()}>놀이</button>
+                    <button type="button" className={this.state.selected_type === "W" ? "btn btn-w selected" : "btn btn-w"} onClick={() => this.onClickWorkButton()}>일</button>
+                    <button type="button" className={this.state.selected_type === "R" ? "btn btn-r selected" : "btn btn-r"} onClick={() => this.onClickRestButton()}>휴식</button>
+                    <button type="button" className={this.state.selected_type === "P" ? "btn btn-p selected" : "btn btn-p"} onClick={() => this.onClickPlayButton()}>놀이</button>
+                </div>
+                <div className="input-group">
                     <input type="message" className="form-control" id="inputMessage" placeholder="간단한 설명"
-                           onChange={(e) => this.onChangeMessageInput(e)} value={this.state.typed_message}/>
-                    <button className="btn btn-default" onClick={(e) => this.submitButtonClick(e)}>저장</button>
+                         onChange={(e) => this.onChangeMessageInput(e)} value={this.state.typed_message}/>
+                    <span className="input-group-btn">
+                      <button className="btn btn-default" onClick={(e) => this.submitButtonClick(e)}>저장</button>
+                    </span>
                 </div>
                 <p className="bg-danger">{this.state.warning_message}</p>
             </div>
