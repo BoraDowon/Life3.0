@@ -1,7 +1,6 @@
 from django.http import JsonResponse, HttpRequest, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.shortcuts import redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -10,24 +9,12 @@ import json
 from . import services
 
 
-# TODO: remove
+# TODO: TBD
+# In a current url policy, url including overlaps between a render page and an api path.
+# If we use a class for html rendering such as login, we should separate an app by a function based not a service based.
+
 def api_home(request: HttpRequest):
-    try:
-        code = request.GET.get('code')
-        print('Facebook Token: ' + code)
-    except TypeError:
-        print('Anonymous')
-    '''
-    url = 'https://graph.facebook.com/me?access_token={}&fields=id.name,email,picture'
-    '''
     return render(request, 'home.html')
-
-
-def facebook_oauth_test(request: HttpRequest):
-    client_id = '742227722635556'
-
-    url = 'https://www.facebook.com/v2.10/dialog/oauth?client_id={}&redirect_uri=http://localhost:8000/'.format(client_id)
-    return HttpResponseRedirect(url)
 
 
 class LifeCardList(APIView):
