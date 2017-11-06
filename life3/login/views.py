@@ -37,7 +37,7 @@ class LoginApi(APIView):
         else:
             message = 'userId is empty!'
 
-        return Response({'result', message})
+        return Response({'result': message})
 
     def get(self):
-        return Response({'result', 'unsupported request'})
+        return Response({'result': 'unsupported request'})
