@@ -18,7 +18,7 @@ from django.conf.urls import include
 from life3.dashboard import views as dashboard_view
 
 urlpatterns = [
-    url(r'^$/', dashboard_view.api_home),
+    url(r'^$', dashboard_view.api_home),
     url(r'^dashboard/api/', include('life3.dashboard.urls')),
 
     url(r'^login/', include('life3.login.urls')),
