@@ -18,13 +18,8 @@ from django.conf.urls import include
 from life3.dashboard import views as dashboard_view
 
 urlpatterns = [
-    # TODO: change to dashboard/
-    url(r'^$', dashboard_view.api_home),
-    # TODO: change to dashboard/api/
+    url(r'^dashboard/', dashboard_view.api_home),
     url(r'^dashboard/api/', include('life3.dashboard.urls')),
 
     url(r'^login/', include('life3.login.urls')),
-
-    # TODO: remove it
-    url(r'^facebook/', dashboard_view.facebook_oauth_test),
 ]
