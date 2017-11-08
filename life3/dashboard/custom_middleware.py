@@ -1,19 +1,21 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import JsonResponse
-
+from functools import wraps
 
 class SimpleMiddlerware(object):
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path == '/login/':
+        '''
+        if request.path == '/login/' or request.path == '/':
             print('no auth')
         else:
             status = self.process_request(request)
             if status == 'Fail':
                 return JsonResponse(({'detail': 'Authentication credentials were not provided.'}), status=403)
+        '''
         return self.get_response(request)
 
     def process_request(self, request: HttpRequest):
@@ -34,3 +36,27 @@ class SimpleMiddlerware(object):
     def process_response(self, request, response):
         print('process_response: ', request.path)
         return response
+
+
+def _auth_test_helper(request: HttpRequest):
+    try:
+        access_token = request.META.get('HTTP_AUTHORIZATION').replace('TOKEN ', '')
+        if access_token == '1234':
+            return True
+        else:
+            return False
+    except AttributeError:
+        return False
+
+
+def auth_test(func):
+    @wraps(func)
+    def inner(request, *args, **kwargs):
+        result = _auth_test_helper(request)
+        print(result)
+        if result is not False:
+            return result
+        else:
+            return JsonResponse(({'detail': 'Authentication credentials were not provided.'}), status=403)
+        return func(request, *args, **kwargs)
+    return inner
