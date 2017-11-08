@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 class SimpleMiddlerware(object):
@@ -12,7 +13,7 @@ class SimpleMiddlerware(object):
         else:
             status = self.process_request(request)
             if status == 'Fail':
-                return HttpResponse(status=403)
+                return JsonResponse(({'detail': 'Authentication credentials were not provided.'}), status=403)
         return self.get_response(request)
 
     def process_request(self, request: HttpRequest):
