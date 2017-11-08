@@ -8,11 +8,15 @@ import json
 
 from . import services
 
+from life3.dashboard.custom_middleware import auth_test
+from django.utils.decorators import method_decorator
 
 # TODO: TBD
 # In a current url policy, url including overlaps between a render page and an api path.
 # If we use a class for html rendering such as login, we should separate an app by a function based not a service based.
 
+
+@auth_test
 def api_home(request: HttpRequest):
     return render(request, 'home.html')
 
@@ -21,6 +25,7 @@ class LifeCardList(APIView):
     """
     List all lifecards.
     """
+    @method_decorator(auth_test)
     def get(self, request: HttpRequest, format=None):
         lifecards = services.read_events()
         return Response({'events': lifecards})
