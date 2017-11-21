@@ -8,7 +8,8 @@ import json
 
 from . import services
 
-from life3.dashboard.custom_middleware import auth_test
+#from life3.dashboard.custom_middleware import auth_test
+from life3.user.decorators import auth_test
 from django.utils.decorators import method_decorator
 
 # TODO: TBD
@@ -16,7 +17,7 @@ from django.utils.decorators import method_decorator
 # If we use a class for html rendering such as login, we should separate an app by a function based not a service based.
 
 
-@auth_test
+#@auth_test
 def api_home(request: HttpRequest):
     return render(request, 'home.html')
 
@@ -25,7 +26,7 @@ class LifeCardList(APIView):
     """
     List all lifecards.
     """
-    @method_decorator(auth_test)
+    #@method_decorator(auth_test)
     def get(self, request: HttpRequest, format=None):
         lifecards = services.read_events()
         return Response({'events': lifecards})
@@ -50,6 +51,7 @@ class LifeCardDetail(APIView):
 
     def delete(self, request: HttpRequest, card_pk, format=None):
         pass
+
 
 @csrf_exempt
 def api_lifecards(request: HttpRequest) -> JsonResponse:
