@@ -31,7 +31,7 @@ class LifeCard(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
-
+'''
 # TODO TBD: UserModel
 from django.contrib.auth.models import AbstractBaseUser
 from .managers import LifeUserManager
@@ -69,3 +69,4 @@ class LifeUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+'''
